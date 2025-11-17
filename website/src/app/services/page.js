@@ -1,0 +1,17 @@
+export const metadata = {
+  title: "Services | My Company",
+  description: "Explore the services we offer.",
+};
+
+export default function ServicesPage() {
+  return (
+    <main>
+      <h1>Our Services</h1>
+      <ul>
+        <li>Service 1</li>
+        <li>Service 2</li>
+        <li>Service 3</li>
+      </ul>
+    </main>
+  );
+}
