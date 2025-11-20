@@ -1,20 +1,21 @@
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
-import "./globals.css";
+ import "./globals.css";
+ import Header from "@/components/Header";
+ import Footer from "@/components/Footer";
 
-export const metadata = {
-  title: "My Company",
-  description: "Official website of My Company.",
+  export const metadata = {
+     title: "MY Company",
+     description: "Official website of My Company",
 };
 
-export default function RootLayout({ children }) {
-  return (
-    <html lang="en">
-      <body>
-        <Header />     {/* Always visible */}
-        <main>{children}</main>
-        <Footer />     {/* Always visible */}
+  export default function RootLayout({ children }) {
+     return (
+       <html lang="en">
+         <body className="bg-[#0A0F1F]"> 
+           <Header />                  
+         {children}
+           <Footer />                  
       </body>
-    </html>
-  );
-}
+     </html>
+   );
+  }
+
