@@ -49,24 +49,24 @@ export default function Header() {
             className="flex items-center gap-3 group cursor-pointer relative z-10"
           >
             <div className="relative">
-             <div className="absolute inset-0 bg-gradient-to-r from-[#3AB4FF] to-[#A042F4] rounded-full blur-lg opacity-0 group-hover:opacity-30 transition-opacity duration-500"></div>
+             <div className="absolute inset-0 bg-linear-to-r from-[#3AB4FF] to-[#A042F4] rounded-full blur-lg opacity-0 group-hover:opacity-30 transition-opacity duration-500"></div>
 
               <Image
                 src="/logo.png"
                 width={scrolled ? 100: 110}
                 height={scrolled ? 100 : 110}
                 alt="CodeWinX IT Logo"
-               className="relative transition-all duration-500 group-hover:rotate-[360deg] drop-shadow-2xl"
+               className="relative transition-all duration-500 group-hover:rotate-360deg drop-shadow-2xl"
               />
             </div>
 
             <div className="flex flex-col">
              <h1
-                   className={`font-bold tracking-wide whitespace-nowrap bg-gradient-to-r from-[#3AB4FF] via-[#5F6FFF] to-[#A042F4] bg-clip-text text-transparent transition-all duration-500 ${
+                   className={`font-bold tracking-wide whitespace-nowrap bg-linear-to-r from-[#3AB4FF] via-[#5F6FFF] to-[#A042F4] bg-clip-text text-transparent transition-all duration-500 ${
                   scrolled ? "text-2xl" : "text-3xl"
                 }`}
   >
-               CodeWinX IT
+               CodeWinX 
               </h1>
 
                    <span className="text-xs text-white font-light tracking-widest opacity-100 transition-opacity duration-300 self-end">
@@ -89,7 +89,7 @@ export default function Header() {
                   <span
                     className={`transition-all duration-300 ${
                       isActive
-                        ? "bg-gradient-to-r from-[#3AB4FF] via-[#5F6FFF] to-[#A042F4] bg-clip-text text-transparent font-semibold"
+                        ? "bg-linear-to-r from-[#3AB4FF] via-[#5F6FFF] to-[#A042F4] bg-clip-text text-transparent font-semibold"
                         : "text-gray-300 group-hover:text-white"
                     }`}
                   >
@@ -97,10 +97,10 @@ export default function Header() {
                   </span>
 
                   <span
-                    className={`absolute left-0 -bottom-2 h-[2px] rounded-full transition-all duration-300 ${
+                    className={`absolute left-0 -bottom-2 h-05rounded-full transition-all duration-300 ${
                       isActive
-                        ? "w-full bg-gradient-to-r from-[#3AB4FF] via-[#5F6FFF] to-[#A042F4]"
-                        : "w-0 bg-gradient-to-r from-[#3AB4FF] to-[#A042F4] group-hover:w-full"
+                        ? "w-full bg-linear-to-r from-[#3AB4FF] via-[#5F6FFF] to-[#A042F4]"
+                        : "w-0 bg-linear-to-r from-[#3AB4FF] to-[#A042F4] group-hover:w-full"
                     }`}
                   ></span>
                   </Link>
@@ -114,7 +114,7 @@ export default function Header() {
                 className="
                   ml-6 flex items-center gap-3 px-5 py-3 rounded-xl 
                   font-semibold text-white text-sm
-                  bg-gradient-to-r from-[#3AB4FF] via-[#5F6FFF] to-[#A042F4]
+                  bg-linear-to-r from-[#3AB4FF] via-[#5F6FFF] to-[#A042F4]
                   shadow-lg hover:shadow-2xl hover:scale-105
                   animate-float-smooth transition-all duration-300
                 "
@@ -139,7 +139,7 @@ export default function Header() {
           </button>
         </div>
 
-        <div className="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-purple-500/50 to-transparent"></div>
+        <div className="absolute bottom-0 left-0 w-full h-1px bg-linear-to-r from-transparent via-purple-500/50 to-transparent"></div>
       </header>
 
       {/* MOBILE MENU */}
@@ -168,7 +168,7 @@ export default function Header() {
                   onClick={() => setMobileMenuOpen(false)}
                   className={`px-6 py-4 rounded-xl text-lg font-medium transition-all duration-300 ${
                     isActive
-                      ? "bg-gradient-to-r from-[#3AB4FF]/20 via-[#5F6FFF]/20 to-[#A042F4]/20 text-white border-l-4 border-[#3AB4FF]"
+                      ? "bg-linear-to-r from-[#3AB4FF]/20 via-[#5F6FFF]/20 to-[#A042F4]/20 text-white border-l-4 border-[#3AB4FF]"
                       : "text-gray-300 hover:bg-white/5 hover:text-white hover:translate-x-2"
                   }`}
                 >
@@ -184,7 +184,7 @@ export default function Header() {
               className="
                 mt-6 flex items-center gap-3 px-6 py-4 rounded-xl 
                 text-white font-semibold text-lg w-[85%] mx-auto
-                bg-gradient-to-r from-[#3AB4FF] via-[#5F6FFF] to-[#A042F4]
+                bg-linear-to-r from-[#3AB4FF] via-[#5F6FFF] to-[#A042F4]
                 shadow-lg hover:shadow-2xl hover:scale-105
                 animate-float-smooth transition-all duration-300
               "
