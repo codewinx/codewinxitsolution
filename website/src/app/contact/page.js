@@ -73,8 +73,8 @@ export default function Contact() {
   };
 
   return (
-    <div className="min-h-screen w-full bg-[#05070F] relative overflow-hidden">
-      
+    <div className="min-h-screen w-full bg-[#05070F] relative overflow-hidden px-6 md:px-16 lg:px-28">
+
       {/* Grid Pattern */}
       <div className="absolute inset-0 bg-grid-pattern opacity-[0.05]" />
 
@@ -85,18 +85,19 @@ export default function Contact() {
         <div className="absolute -bottom-20 left-1/2 w-[450px] h-[450px] bg-[#0A233A] rounded-full filter blur-[120px] opacity-40 animate-blob animation-delay-4000" />
       </div>
 
-      <div className="relative z-10 flex flex-col items-center pt-20 pb-20 px-4">
+      {/* ✅ Increased Top Padding */}
+      <div className="relative z-5 flex flex-col items-center pt-38 md:pt-38 pb-5">
 
         {/* Title */}
         <div className="text-center mb-12 animate-fadeIn">
-          <h1 className="text-6xl md:text-7xl font-black text-white mb-4 tracking-tight">
-            Let's Build Something
-            <span className="block bg-gradient-to-r from-[#005AE0] via-[#43C8FF] to-[#FF47BE] bg-clip-text text-transparent mt-2 pb-4 inline-block">
+          <h2 className="text-4xl md:text-5xl font-black text-white mb-4 tracking-tight">
+            Let's Build Something <br/>
+            <span className="block bg-gradient-to-r from-[#005AE0] via-[#43C8FF] to-[#FF47BE] bg-clip-text text-transparent mt-2 pb-3 inline-block">
               Amazing Together
             </span>
-          </h1>
-
-          <p className="text-gray-300 max-w-2xl text-lg leading-relaxed px-4 mx-auto">
+          </h2>
+          
+          <p className="text-gray-300 max-w-2xl text-lg leading-relaxed px-1 mx-auto">
             Transform your ideas with{" "}
             <span className="font-bold text-transparent bg-gradient-to-r from-cyan-300 to-purple-300 bg-clip-text">
               CodeWinx IT Solutions
@@ -106,7 +107,7 @@ export default function Contact() {
         </div>
 
         {/* Main Container */}
-        <div className="w-full max-w-7xl px-4 space-y-8">
+        <div className="w-full max-w-7xl space-y-8">
 
           {/* Feature Cards */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -119,12 +120,12 @@ export default function Contact() {
                   tabIndex={0}
                   onClick={() => setActiveCard(isActive ? null : idx)}
                   onKeyDown={(e) => handleCardKey(e, idx)}
-                  className={`card bg-[#0E1525]/60 backdrop-blur-xl border border-white/10 rounded-2xl p-6 transition-all duration-300 cursor-pointer transform-gpu
+                  className={`card bg-[#0E1525]/60 backdrop-blur-xl border border-white/10 rounded-2xl p-3 transition-all duration-300 cursor-pointer transform-gpu
                     ${isActive ? "scale-105 -translate-y-3 shadow-2xl border-white/30" : "hover:scale-102 hover:border-white/20"}`}
                   data-mounted={mounted ? "true" : "false"}
                 >
-                  <div className="flex flex-col items-center text-center gap-3">
-                    <div className={`w-16 h-16 rounded-xl flex items-center justify-center text-white transition-transform 
+                  <div className="flex flex-col items-center text-center gap-2">
+                    <div className={`w-12 h-12 rounded-xl flex items-center justify-center text-white transition-transform 
                       ${isActive ? "scale-110" : "group-hover:scale-110"} 
                       bg-gradient-to-br from-indigo-600 to-purple-700`}
                     >
@@ -140,14 +141,12 @@ export default function Contact() {
 
           {/* Form + Info */}
           <div className="grid lg:grid-cols-3 gap-8">
-
             {/* Contact Form */}
             <div className="lg:col-span-2">
               <div
                 className="card bg-[#0E1525]/80 backdrop-blur-xl shadow-2xl rounded-3xl p-8 border border-white/10"
                 data-mounted={mounted ? "true" : "false"}
               >
-                
                 {/* Header */}
                 <div className="flex items-center gap-3 mb-8">
                   <div className="w-14 h-14 bg-gradient-to-br from-blue-700 to-purple-700 rounded-xl flex items-center justify-center shadow-lg">
@@ -191,7 +190,7 @@ export default function Contact() {
                       value={form.email}
                       onChange={handleChange}
                       className="w-full bg-[#111827] border border-gray-700 px-5 py-4 rounded-xl text-white focus:border-purple-500 outline-none"
-                      placeholder="abc@example.com"
+                      placeholder="abc@gmail.com"
                     />
                   </div>
 
@@ -335,7 +334,7 @@ export default function Contact() {
       </div>
 
       {/* Social Icons */}
-      <div className="relative z-10 mt-16 text-center pb-16 px-4">
+      <div className="relative z-10 mt-16 text-center pb-16">
         <h2 className="text-2xl font-semibold mb-6 text-white">Connect With Us</h2>
 
         <div className="flex justify-center gap-6 text-4xl">
@@ -349,46 +348,61 @@ export default function Contact() {
 
       {/* Animations */}
       <style jsx>{`
-        .card {
-          opacity: 0;
-          transform: translateY(32px) scale(0.995);
-        }
-        .card[data-mounted="true"] {
-          animation-name: cardFade;
-          animation-duration: 900ms;
-          animation-timing-function: cubic-bezier(.16,.84,.31,1);
-          animation-fill-mode: forwards;
-        }
+  .card {
+    opacity: 0;
+    transform: translateY(32px) scale(0.995);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
 
-        @keyframes cardFade {
-          0% { opacity: 0; transform: translateY(32px) scale(0.995); }
-          60% { opacity: 1; transform: translateY(-6px) scale(1.005); }
-          100% { opacity: 1; transform: translateY(0) scale(1); }
-        }
+  .card[data-mounted="true"] {
+    animation-name: cardFade;
+    animation-duration: 900ms;
+    animation-timing-function: cubic-bezier(.16,.84,.31,1);
+    animation-fill-mode: forwards;
+  }
 
-        @keyframes fadeIn {
-          from { opacity: 0; transform: translateY(30px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
+  /* ✅ POPUP CLICK ANIMATION */
+  .card:active {
+    transform: scale(1.08) translateY(-6px);
+    box-shadow: 0 0 25px rgba(255, 255, 255, 0.15);
+  }
 
-        @keyframes blob {
-          0%, 100% { transform: translate(0, 0) scale(1); }
-          33% { transform: translate(30px, -50px) scale(1.1); }
-          66% { transform: translate(-20px, 20px) scale(0.9); }
-        }
+  /* ✅ POPUP HOVER ANIMATION */
+  .card:hover {
+    transform: scale(1.04) translateY(-4px);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.12);
+  }
 
-        .animate-fadeIn { animation: fadeIn 0.8s ease-out forwards; }
-        .animate-blob { animation: blob 7s infinite; }
-        .animation-delay-2000 { animation-delay: 2s; }
-        .animation-delay-4000 { animation-delay: 4s; }
+  @keyframes cardFade {
+    0% { opacity: 0; transform: translateY(32px) scale(0.995); }
+    60% { opacity: 1; transform: translateY(-6px) scale(1.005); }
+    100% { opacity: 1; transform: translateY(0) scale(1); }
+  }
 
-        .bg-grid-pattern {
-          background-image:
-            linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
-          background-size: 50px 50px;
-        }
-      `}</style>
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes blob {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(30px, -50px) scale(1.1); }
+    66% { transform: translate(-20px, 20px) scale(0.9); }
+  }
+
+  .animate-fadeIn { animation: fadeIn 0.8s ease-out forwards; }
+  .animate-blob { animation: blob 7s infinite; }
+  .animation-delay-2000 { animation-delay: 2s; }
+  .animation-delay-4000 { animation-delay: 4s; }
+
+  .bg-grid-pattern {
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+    background-size: 50px 50px;
+  }
+`}
+      </style>
 
     </div>
   );
