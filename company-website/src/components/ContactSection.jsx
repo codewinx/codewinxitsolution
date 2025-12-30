@@ -17,11 +17,11 @@ import {
 } from "lucide-react";
 import {
   FaWhatsapp,
-  FaTwitter,
+  FaXTwitter,
   FaInstagram,
   FaTelegram,
   FaLinkedin,
-} from "react-icons/fa";
+} from "react-icons/fa6";
 
 
 export default function Contact() {
@@ -94,7 +94,7 @@ export default function Contact() {
         <div className="text-center mb-12 animate-fadeIn">
           <h2 className="text-4xl md:text-5xl font-black text-white mb-4 tracking-tight">
             Let's Build Something <br/>
-            <span className="block bg-gradient-to-r from-[#005AE0] via-[#43C8FF] to-[#FF47BE] bg-clip-text text-transparent mt-2 pb-3 inline-block">
+            <span className="block bg-gradient-to-r from-[#005AE0] via-[#43C8FF] to-[#FF47BE] bg-clip-text text-transparent mt-3 pb-4 inline-block">
               Amazing Together
             </span>
           </h2>
@@ -156,7 +156,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <h2 className="text-3xl font-bold text-white">Send us a Message</h2>
-                    <p className="text-gray-400">We’ll reply within 24 hours</p>
+                    <p className="text-gray-400">We'll reply within 24 hours</p>
                   </div>
                 </div>
 
@@ -298,55 +298,28 @@ export default function Contact() {
                   </div>
 
                 </div>
-              </div>
+                   </div>
 
-              {/* Business Hours */}
-              <div
-                className="card bg-gradient-to-br from-indigo-700 via-purple-700 to-pink-600 rounded-3xl p-6 shadow-2xl"
-                data-mounted={mounted ? "true" : "false"}
-              >
-                <div className="flex items-center gap-3 mb-4">
-                  <Clock className="w-7 h-7 text-white" />
-                  <h3 className="text-xl font-bold text-white">Business Hours</h3>
-                </div>
-
-                <div className="space-y-3 text-white">
-                  <div className="flex justify-between items-center p-3 bg-white/10 rounded-xl">
-                    <span className="font-semibold text-sm">Monday - Saturday</span>
-                    <span className="text-blue-100 text-sm">24 Hours</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* Quick Response */}
-              <div
-                className="card bg-[#0E1525]/70 backdrop-blur-xl border border-white/10 rounded-3xl p-6 text-center"
-                data-mounted={mounted ? "true" : "false"}
-              >
-                <div className="w-14 h-14 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Zap className="w-7 h-7 text-white" />
-                </div>
-                <h4 className="text-lg font-bold text-white mb-2">Quick Response Guarantee</h4>
-                <p className="text-gray-300 text-sm">We respond within 24 hours.</p>
-              </div>
-
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Social Icons */}
+               {/* Social Icons */}
       <div className="relative z-10 mt-16 text-center pb-16">
         <h2 className="text-2xl font-semibold mb-6 text-white">Connect With Us</h2>
 
         <div className="flex justify-center gap-6 text-4xl">
           <a className="text-green-400 hover:scale-125 transition-transform"><FaWhatsapp /></a>
-          <a className="text-blue-300 hover:scale-125 transition-transform"><FaTwitter /></a>
+          <a className="text-blue-300 hover:scale-125 transition-transform"><FaXTwitter /></a>
           <a className="text-pink-400 hover:scale-125 transition-transform"><FaInstagram /></a>
           <a className="text-blue-400 hover:scale-125 transition-transform"><FaTelegram /></a>
           <a className="text-blue-500 hover:scale-125 transition-transform"><FaLinkedin /></a>
         </div>
       </div>
+
+              
+            </div>
+          </div>
+        </div>
+      </div>
+
+      
 
       {/* Animations */}
       <style jsx>{`
