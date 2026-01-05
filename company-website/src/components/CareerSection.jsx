@@ -36,22 +36,22 @@ export default function CareerSection() {
 
   const benefits = [
     {
-      icon: <TrendingUp className="w-8 h-8" />,
+      icon: <TrendingUp className="w-6 h-6" />,
       title: 'A Culture Built on Growth',
       description: 'We offer mentorship, learning, and real-world exposure.'
     },
     {
-      icon: <Briefcase className="w-8 h-8" />,
+      icon: <Briefcase className="w-6 h-6" />,
       title: 'Work That Matters',
       description: 'Projects that impact startups & enterprises.'
     },
     {
-      icon: <Users className="w-8 h-8" />,
+      icon: <Users className="w-6 h-6" />,
       title: 'Flexible Work Culture',
       description: 'Hybrid options & modern workflows.'
     },
     {
-      icon: <Award className="w-8 h-8" />,
+      icon: <Award className="w-6 h-6" />,
       title: 'Recognition & Rewards',
       description: 'We reward your contributions.'
     }
@@ -68,21 +68,6 @@ export default function CareerSection() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 text-white px-6 md:px-12 lg:px-20">
 
-      {/* Hero Section */}
-      <section className="relative overflow-hidden pt-32 pb-20">
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-pink-500/10 animate-pulse"></div>
-        <div className="max-w-6xl mx-auto text-center relative z-10">
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-white animate-fade-in">
-            Build Your Future with
-          </h1>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 bg-gradient-to-r from-[#00c2ff] via-[#5b4bff] to-[#ff3bcd] text-transparent bg-clip-text">
-            CodeWinx IT Solutions
-          </h2>
-          <p className="text-lg md:text-xl text-gray-300 mb-12 max-w-3xl mx-auto">
-            Join a team where innovation meets creativity — and your growth truly matters.
-          </p>
-        </div>
-      </section>
 
       {/* Why Work With Us */}
       <section className="py-18 relative overflow-hidden">
@@ -98,20 +83,20 @@ export default function CareerSection() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {benefits.map((benefit, index) => (
               <div
                 key={index}
-                className="group bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-sm p-8 rounded-3xl border border-slate-700/50 hover:border-blue-500/50 transition-all duration-500 hover:scale-105 hover:shadow-xl hover:shadow-blue-500/30 animate-float-up cursor-pointer"
+                className="group bg-gradient-to-br from-slate-800/50 to-slate-900/50 backdrop-blur-sm p-5 rounded-2xl border border-slate-700/50 hover:border-blue-500/50 transition-all duration-500 hover:scale-105 hover:shadow-xl hover:shadow-blue-500/30 animate-float-up cursor-pointer"
                 style={{ animationDelay: `${index * 150}ms` }}
               >
-                <div className="text-blue-400 mb-5 group-hover:scale-125 group-hover:rotate-6 transition-all duration-500 group-hover:text-purple-400">
+                <div className="text-blue-400 mb-3 group-hover:scale-125 group-hover:rotate-6 transition-all duration-500 group-hover:text-purple-400">
                   {benefit.icon}
                 </div>
-                <h3 className="text-lg md:text-xl font-bold mb-3 text-white group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-purple-400 group-hover:bg-clip-text transition-all duration-300">
+                <h3 className="text-base md:text-lg font-bold mb-2 text-white group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-blue-400 group-hover:to-purple-400 group-hover:bg-clip-text transition-all duration-300">
                   {benefit.title}
                 </h3>
-                <p className="text-base md:text-lg text-gray-400 leading-relaxed group-hover:text-gray-300 transition-colors duration-300">
+                <p className="text-sm md:text-base text-gray-400 leading-relaxed group-hover:text-gray-300 transition-colors duration-300">
                   {benefit.description}
                 </p>
               </div>
