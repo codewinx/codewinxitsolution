@@ -9,13 +9,14 @@ export default function Header() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [activeHash, setActiveHash] = useState("#home");
 
   const navItems = [
-    { name: "Home", href: "/" },
-    { name: "About", href: "/about" },
-    { name: "Services", href: "/services" },
-    { name: "Career", href: "/career" },
-    { name: "Contact", href: "/contact" },
+    { name: "Home", href: "#home" },
+    { name: "About", href: "#about" },
+    { name: "Services", href: "#services" },
+    { name: "Career", href: "#career" },
+    { name: "Contact", href: "#contact" },
   ];
 
   useEffect(() => {
@@ -32,92 +33,87 @@ export default function Header() {
     document.body.style.backgroundColor = "#ffffff";
   }, [pathname]);
 
+  // ✅ HASH TRACKING (FIX)
+  useEffect(() => {
+    const updateHash = () => {
+      setActiveHash(window.location.hash || "#home");
+    };
+
+    updateHash();
+    window.addEventListener("hashchange", updateHash);
+    return () => window.removeEventListener("hashchange", updateHash);
+  }, []);
+
   return (
     <>
       <header
-        className={`w-full fixed top-0 left-0 z-50 transition-all duration-500 ${
+        className={`w-full fixed top-0 left-0 z-50 h-24 transition-all duration-500 ${
           scrolled
             ? "h-20 bg-[#0A0F1F] shadow-2xl shadow-purple-900/20"
-            : "h-24 bg-[#0A0F1F]"
+            : "bg-[#0A0F1F]"
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 h-full flex justify-between items-center">
-          {/* LOGO + COMPANY NAME */}
-          <Link
-            href="/"
-            className="flex items-center gap-3 group cursor-pointer relative z-10"
-          >
+          {/* LOGO */}
+          <Link href="/" className="flex items-center gap-3 group relative z-10">
             <div className="relative">
-             <div className="absolute inset-0 bg-linear-to-r from-[#3AB4FF] to-[#A042F4] rounded-full blur-lg opacity-0 group-hover:opacity-15 transition-opacity duration-500"></div>
-
+              <div className="absolute inset-0 bg-linear-to-r from-[#3AB4FF] to-[#A042F4] rounded-full blur-lg opacity-0 group-hover:opacity-15 transition-opacity duration-500" />
               <Image
                 src="/cwxlogo.png"
-                width={scrolled ? 100: 110}
-                height={scrolled ? 100 : 110}
+                width={110}
+                height={110}
                 alt="CodeWinX IT Logo"
-               className="logo-spin relative transition-all duration-500 drop-shadow-2xl"
+                priority
+                className="logo-spin relative drop-shadow-2xl w-auto h-auto"
               />
             </div>
 
             <div className="flex flex-col">
-             <h1
-                   className={`font-bold tracking-wide whitespace-nowrap bg-linear-to-r from-[#3AB4FF] via-[#5F6FFF] to-[#A042F4] bg-clip-text text-transparent transition-all duration-500 ${
-                  scrolled ? "text-2xl" : "text-3xl"
-                }`}
-             >
-               CodeWinX 
+              <h1 className="font-bold tracking-wide whitespace-nowrap bg-linear-to-r from-[#3AB4FF] via-[#5F6FFF] to-[#A042F4] bg-clip-text text-transparent text-3xl">
+                CodeWinX
               </h1>
-
-                   <span className="text-xs text-white font-light tracking-widest opacity-100 transition-opacity duration-300 self-end">
-                      We Code, You Win.
-                   </span>
+              <span className="text-xs text-white font-light tracking-widest self-end">
+                We Code, You Win.
+              </span>
             </div>
           </Link>
 
           {/* DESKTOP NAV */}
           <nav className="hidden lg:flex gap-8 items-center">
-            {navItems.map((item, index) => {
-              const isActive = pathname === item.href;
+            {navItems.map((item) => {
+              const isActive = activeHash === item.href;
+
               return (
                 <Link
                   key={item.name}
                   href={item.href}
-                  className="relative text-base font-medium group transition"
-                  style={{ animationDelay: `${index * 100}ms` }}
+                  onClick={() => setActiveHash(item.href)}
+                  className="relative group text-sm font-medium"
                 >
                   <span
-                    className={`transition-all duration-300 ${
+                    className={`relative inline-block pb-2 transition-all duration-300 ${
                       isActive
-                        ? "bg-linear-to-r from-[#3AB4FF] via-[#5F6FFF] to-[#A042F4] bg-clip-text text-transparent font-semibold"
-                        : "text-gray-300 group-hover:text-white"
+                        ? "text-[#5F6FFF]"
+                        : "text-gray-300 group-hover:text-[#5F6FFF]"
                     }`}
                   >
                     {item.name}
                   </span>
 
                   <span
-                    className={`absolute left-0 -bottom-2 h-05rounded-full transition-all duration-300 ${
-                      isActive
-                        ? "w-full bg-linear-to-r from-[#3AB4FF] via-[#5F6FFF] to-[#A042F4]"
-                        : "w-0 bg-linear-to-r from-[#3AB4FF] to-[#A042F4] group-hover:w-full"
+                    className={`absolute left-0 bottom-0 h-0.5 bg-linear-to-r from-[#3AB4FF] to-[#A042F4] transition-all duration-300 ${
+                      isActive ? "w-full" : "w-0 group-hover:w-full"
                     }`}
-                  ></span>
-                  </Link>
+                  />
+                </Link>
               );
             })}
 
-              {/* WHATSAPP ICON BUTTON(desktop)*/}
-              <Link
-                href="https://wa.me/919876543210"
-                target="_blank"
-                className="
-                  ml-6 flex items-center gap-3 px-5 py-3 rounded-xl 
-                  font-semibold text-white text-sm
-                  bg-linear-to-r from-[#3AB4FF] via-[#5F6FFF] to-[#A042F4]
-                  shadow-lg hover:shadow-2xl hover:scale-105
-                  animate-float-smooth transition-all duration-300
-                "
-              >
+            <Link
+              href="https://wa.me/919876543210"
+              target="_blank"
+              className="ml-6 flex items-center gap-3 px-5 py-3 rounded-xl font-semibold text-white text-sm bg-linear-to-r from-[#3AB4FF] via-[#5F6FFF] to-[#A042F4] shadow-lg hover:shadow-2xl hover:scale-105 animate-float-smooth transition-all duration-300"
+            >
               <Image
                 src="/whatsapp.png"
                 alt="WhatsApp"
@@ -125,20 +121,18 @@ export default function Header() {
                 height={28}
                 className="animate-spin-slow"
               />
-               Chat on WhatsApp
+              Chat on WhatsApp
             </Link>
           </nav>
 
-          {/* MOBILE MENU BUTTON */}
+          {/* MOBILE BUTTON */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden z-50 text-white p-2 rounded-lg hover:bg-white/10 transition-colors"
+            className="lg:hidden z-50 text-white p-2 rounded-lg hover:bg-white/10"
           >
             {mobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
           </button>
         </div>
-
-        <div className="absolute bottom-0 left-0 w-full h-1px bg-linear-to-r from-transparent via-purple-500/50 to-transparent"></div>
       </header>
 
       {/* MOBILE MENU */}
@@ -150,7 +144,7 @@ export default function Header() {
         <div
           className="absolute inset-0 bg-black/80 backdrop-blur-sm"
           onClick={() => setMobileMenuOpen(false)}
-        ></div>
+        />
 
         <div
           className={`absolute right-0 top-0 h-full w-80 bg-[#0A0F1F] shadow-2xl transition-transform duration-500 ${
@@ -159,7 +153,8 @@ export default function Header() {
         >
           <nav className="flex flex-col gap-2 p-8 mt-24">
             {navItems.map((item) => {
-              const isActive = pathname === item.href;
+              const isActive = activeHash === item.href;
+
               return (
                 <Link
                   key={item.name}
