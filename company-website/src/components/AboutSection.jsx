@@ -1,21 +1,28 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { motion } from "framer-motion"; // ✅ ADDED (THIS FIXES THE ERROR)
 import {
   FaInstagram,
   FaLinkedin,
   FaTwitter,
   FaWhatsapp,
   FaTelegram,
+  FaPhoneAlt,
 } from "react-icons/fa";
 
 export default function AboutPage() {
-  const [show, setShow] = useState(false);
+  const fullText = "Codewinx IT Solutions";
+  const [typedText, setTypedText] = useState("");
 
   useEffect(() => {
-    const t = setTimeout(() => setShow(true), 150);
-    return () => clearTimeout(t);
+    let index = 0;
+    const typingInterval = setInterval(() => {
+      setTypedText(fullText.slice(0, index + 1));
+      index++;
+      if (index === fullText.length) clearInterval(typingInterval);
+    }, 90);
+
+    return () => clearInterval(typingInterval);
   }, []);
 
   return (
@@ -34,92 +41,53 @@ export default function AboutPage() {
               drop-shadow-[0_0_35px_rgba(0,194,255,0.45)]"
           />
 
-          {/* SOCIAL ICONS */}
           <div className="flex gap-6 text-4xl mt-6 pt-6">
-            <FaInstagram className="hover:scale-110 transition text-[#E4405F]" />
-            <FaLinkedin className="hover:scale-110 transition text-[#0A66C2]" />
-            <FaWhatsapp className="hover:scale-110 transition text-[#25D366]" />
-            <FaTelegram className="hover:scale-110 transition text-[#0088CC]" />
-            <FaTwitter className="hover:scale-110 transition text-[#1DA1F2]" />
+            <FaInstagram className="text-[#E4405F]" />
+            <FaLinkedin className="text-[#0A66C2]" />
+            <FaWhatsapp className="text-[#25D366]" />
+            <FaTelegram className="text-[#0088CC]" />
+            <FaTwitter className="text-[#1DA1F2]" />
           </div>
         </div>
 
         {/* RIGHT CONTENT */}
         <div className="text-center">
-          <h1 className="mb-6 leading-tight overflow-hidden">
+          <h1 className="mb-6">
+            <span className="block text-3xl font-semibold">About</span>
 
-            {/* ABOUT */}
-            <span
-              className={`
-                block text-3xl font-semibold
-                transition-opacity duration-700
-                ${show ? "opacity-100" : "opacity-0"}
-              `}
-            >
-              About
+            <span className="block mt-2 text-4xl font-extrabold bg-linear-to-r from-[#00c2ff] via-[#5b4bff] to-[#ff3bcd] text-transparent bg-clip-text">
+              {typedText}
+              <span className="animate-pulse">|</span>
             </span>
-
-            {/* CODEWINX HEADING */}
-            <span
-              className={`
-                block mt-2 text-4xl font-extrabold
-                bg-linear-to-r from-[#00c2ff] via-[#5b4bff] to-[#ff3bcd]
-                text-transparent bg-clip-text
-                transition-opacity duration-1000 delay-150
-                ${show ? "opacity-100" : "opacity-0"}
-              `}
-            >
-              Codewinx IT Solutions
-            </span>
-
           </h1>
 
-          {/* PARAGRAPH */}
-          <p className="text-lg text-gray-300 leading-relaxed mb-6">
-            At{" "}
-            <motion.span
-              initial={{ opacity: 0, y: 10 }}
-              animate={{
-                opacity: 1,
-                y: 0,
-                backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
-                filter: [
-                  "drop-shadow(0 0 6px rgba(99,102,241,0.6))",
-                  "drop-shadow(0 0 14px rgba(168,85,247,0.9))",
-                  "drop-shadow(0 0 6px rgba(99,102,241,0.6))",
-                ],
-              }}
-              transition={{
-                duration: 4,
-                delay: 0.6,
-                repeat: Infinity,
-                ease: "linear",
-              }}
-              className="bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-[length:200%_200%] bg-clip-text text-transparent font-semibold"
-            >
-              CodeWinx IT Solutions
-            </motion.span>{" "}
-            , we craft digital experiences that blend creativity with cutting-edge
+          <p className="text-lg text-gray-300 mb-4">
+            we craft digital experiences that blend creativity with cutting-edge
             technology. We build high-performance websites and digital solutions
             using Next.js, React, Tailwind CSS, MongoDB & Express.
           </p>
 
-          <p className="text-lg text-gray-300 leading-relaxed mb-6">
+          <p className="text-lg text-gray-300 mb-3">
             We believe every brand deserves premium quality development, scalable
             architecture, and eye-catching designs that stand out in the digital world.
           </p>
 
-          <button
-            className="mt-5 bg-linear-to-r from-[#00c2ff] via-[#5b4bff] to-[#ff3bcd]
-              px-8 py-3 rounded-xl text-lg font-semibold shadow-lg
-              hover:opacity-90 transition"
-          >
-            Contact Us
-          </button>
+          {/* CALL ICON */}
+          <div className="flex justify-center mt-6">
+            <a
+              href="tel:+919999999999"
+              className="w-14 h-14 flex items-center justify-center
+                rounded-full bg-[#0c0e1a]
+                border border-[#1d2030]
+                shadow-lg hover:scale-110 transition"
+            >
+              <FaPhoneAlt className="text-white text-xl" />
+            </a>
+          </div>
         </div>
       </div>
 
-      {/* STATS */}
+      {/* STATS BOXES */}
       <div className="max-w-7xl mx-auto mt-20 grid gap-8 sm:grid-cols-3">
         {[
           { number: "3+", label: "Years of Experience" },
@@ -129,15 +97,11 @@ export default function AboutPage() {
           <div
             key={index}
             className="h-32 flex flex-col justify-center items-center
-              px-6 py-4 bg-[#0c0e1a] rounded-xl
-              border border-[#1d2030] shadow-lg
-              hover:scale-105 transition"
+              px-6 py-4 bg-[#0c0e1a]/90
+              rounded-xl border border-[#1d2030]
+              shadow-lg hover:scale-105 transition"
           >
-            <h3
-              className="text-4xl font-bold
-                bg-linear-to-r from-[#00c2ff] via-[#5b4bff] to-[#ff3bcd]
-                text-transparent bg-clip-text"
-            >
+            <h3 className="text-4xl font-bold bg-linear-to-r from-[#00c2ff] via-[#5b4bff] to-[#ff3bcd] text-transparent bg-clip-text">
               {stat.number}
             </h3>
             <p className="text-gray-300 text-sm mt-2 text-center">
@@ -147,7 +111,7 @@ export default function AboutPage() {
         ))}
       </div>
 
-      {/* WHY CHOOSE US */}
+      {/* WHY CHOOSE US – MATCHED BOX STYLE */}
       <div className="max-w-7xl mx-auto mt-24">
         <h2 className="text-4xl font-bold text-center mb-10">
           Why Choose{" "}
@@ -158,25 +122,30 @@ export default function AboutPage() {
 
         <div className="grid md:grid-cols-3 gap-8">
           {[
-            { title: "Creative Design", desc: "Premium UI/UX, neon gradients, and clean modern layouts." },
-            { title: "High Performance", desc: "Next.js optimized websites for speed & SEO ranking." },
-            { title: "Premium Support", desc: "Long-term support, maintenance & improvements." },
+            {
+              title: "Creative Design",
+              desc: "Premium UI/UX, neon gradients, and clean modern layouts.",
+            },
+            {
+              title: "High Performance",
+              desc: "Next.js optimized websites for speed & SEO ranking.",
+            },
+            {
+              title: "Premium Support",
+              desc: "Long-term support, maintenance & improvements.",
+            },
           ].map((card, index) => (
             <div
               key={index}
-              className="h-36 px-6 py-5 bg-[#0c0e1a]
+              className="h-32 flex flex-col justify-center items-center
+                px-6 py-4 bg-[#0c0e1a]/90
                 rounded-xl border border-[#1d2030]
-                shadow-lg flex flex-col justify-center
-                hover:scale-105 transition"
+                shadow-lg hover:scale-105 transition text-center"
             >
-              <h3
-                className="text-lg font-semibold mb-2
-                  bg-linear-to-r from-[#00c2ff] via-[#5b4bff] to-[#ff3bcd]
-                  text-transparent bg-clip-text"
-              >
+              <h3 className="text-lg font-semibold bg-linear-to-r from-[#00c2ff] via-[#5b4bff] to-[#ff3bcd] text-transparent bg-clip-text mb-2">
                 {card.title}
               </h3>
-              <p className="text-gray-300 text-sm leading-relaxed">
+              <p className="text-gray-300 text-sm">
                 {card.desc}
               </p>
             </div>
